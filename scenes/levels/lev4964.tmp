@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqxvhxovqc5y3"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_8qqab"]
+[ext_resource type="PackedScene" uid="uid://c0e4u8inbyrgs" path="res://scenes/player/player.tscn" id="4_seame"]
+[ext_resource type="Texture2D" uid="uid://c83xdudu35xri" path="res://graphics/objects/gate.png" id="5_5vyck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgu14"]
+size = Vector2(13.6658, 3.50087)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_8qqab")
+
+[node name="Gate" type="StaticBody2D" parent="."]
+position = Vector2(589, -564)
+
+[node name="Gate" type="Sprite2D" parent="Gate"]
+texture = ExtResource("5_5vyck")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gate"]
+build_mode = 1
+polygon = PackedVector2Array(-1437, -780, -1436, 559, -1419, 619, -1383, 681, -1348, 717, -1294, 752, -1220, 778, -1146, 780, -365, 776, -365, 563, 489, 564, 490, 779, 1331, 780, 1403, 761, 1453, 733, 1499, 689, 1535, 635, 1555, 582, 1561, 541, 1558, -781)
+
+[node name="Area2D" type="Area2D" parent="Gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
+position = Vector2(65.5, 643.5)
+rotation = -3.14159
+scale = Vector2(59.7842, -35.1341)
+shape = SubResource("RectangleShape2D_tgu14")
+
+[node name="Player" parent="." instance=ExtResource("4_seame")]
+position = Vector2(702, 494)
+
+[node name="LaserTimer" type="Timer" parent="Player"]
+wait_time = 0.5
+one_shot = true
+
+[node name="GrenadeTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[connection signal="body_entered" from="Gate/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Gate/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Player/LaserTimer" to="Player" method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="Player/GrenadeTimer" to="Player" method="_on_grenade_timer_timeout"]

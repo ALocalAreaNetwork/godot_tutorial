@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://tnr1xhbxwh4p"]
+
+[ext_resource type="PackedScene" uid="uid://bbyu5yvayuxlh" path="res://scenes/objects/item_container.tscn" id="1_gyund"]
+[ext_resource type="Texture2D" uid="uid://b4hal6ik7adxf" path="res://graphics/objects/toilet.png" id="2_lmx43"]
+[ext_resource type="Script" path="res://scenes/objects/toilet.gd" id="2_syu40"]
+[ext_resource type="Texture2D" uid="uid://spa0lymg1e0i" path="res://graphics/objects/lid.png" id="4_pfabb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wky7b"]
+size = Vector2(237, 68)
+
+[node name="Toilet" instance=ExtResource("1_gyund")]
+script = ExtResource("2_syu40")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, -91)
+shape = SubResource("RectangleShape2D_wky7b")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_lmx43")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("4_pfabb")

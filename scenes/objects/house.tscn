@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=4 uid="uid://cva4l2wn8n8ww"]
+
+[ext_resource type="Script" path="res://scenes/objects/house.gd" id="1_rufcn"]
+[ext_resource type="TileSet" uid="uid://dfq6fjtmjadgs" path="res://scenes/levels/interior.tres" id="2_hyp1l"]
+[ext_resource type="PackedScene" uid="uid://bjqe1dfjf2x0j" path="res://scenes/objects/simple_light.tscn" id="2_kpaxe"]
+[ext_resource type="PackedScene" uid="uid://bcybo66a5et78" path="res://scenes/objects/wall_lamp.tscn" id="3_nqu1i"]
+[ext_resource type="TileSet" uid="uid://xt6rbt5i3g3v" path="res://scenes/levels/outerwalls.tres" id="3_u1sye"]
+[ext_resource type="TileSet" uid="uid://117m3bmn4xy2" path="res://scenes/levels/interiorwalls.tres" id="4_ptnlc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybj8n"]
+size = Vector2(2873, 2870)
+
+[node name="House" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_rufcn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1173.5, 1170)
+shape = SubResource("RectangleShape2D_ybj8n")
+
+[node name="Interior" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAACAAEAAQABAAEAAAABAAEAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQABAAEAAAABAAIAAQABAAEAAAACAAIAAQABAAEAAAADAAIAAQABAAEAAAAEAAIAAQABAAEAAAAEAAEAAQABAAEAAAADAAEAAQABAAEAAAADAAAAAQABAAEAAAAEAAAAAQABAAEAAAAEAAMAAQABAAEAAAAEAAQAAQABAAEAAAADAAQAAQABAAEAAAADAAUAAQABAAEAAAACAAQAAQABAAEAAAABAAQAAQABAAEAAAAAAAQAAQABAAEAAAAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAUAAQABAAEAAAACAAUAAQABAAEAAAABAAUAAQABAAEAAAAAAAUAAQABAAEAAAAFAAUAAQABAAEAAAAFAAQAAQABAAEAAAAFAAMAAQABAAEAAAAFAAIAAQABAAEAAAAFAAEAAQABAAEAAAAFAAAAAQABAAEAAAAEAAYAAQACAAQAAAADAAYAAQABAAIAAAACAAYAAQABAAIAAAABAAYAAQABAAIAAAAAAAYAAQABAAIAAAD//wYAAQAAAAIAAAD//wUAAQAAAAEAAAD//wQAAQAAAAEAAAD//wMAAQAAAAEAAAD//wIAAQAAAAEAAAD//wEAAQAAAAEAAAD//wAAAQAAAAEAAAD/////AQAAAAAAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQACAAAAAAAGAAAAAQACAAEAAAAGAAEAAQACAAEAAAAGAAIAAQACAAEAAAAGAAMAAQACAAEAAAAGAAQAAQACAAEAAAAGAAUAAQACAAEAAAAGAAYAAQACAAIAAAAFAAYAAQACAAQAAAA=")
+tile_set = ExtResource("2_hyp1l")
+
+[node name="OuterWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAAQAAAAFAAEAAAAGAAMAAAAFAAEAAAAGAAIAAAAFAAEAAAAGAAEAAAAFAAEAAAAGAAAAAAAFAAEAAAAGAAUAAAAFAAEAAAAFAAYAAAAGAAQAAAAEAAYAAAAGAAMAAAADAAYAAAAEAAIAAAACAAYAAAAEAAIAAAABAAYAAAAEAAIAAAAAAAYAAAAEAAIAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAD//wMAAAADAAEAAAD//wIAAAADAAEAAAD//wEAAAADAAEAAAD//wAAAAADAAEAAAAAAP//AAAEAAAAAAABAP//AAAEAAAAAAACAP//AAAEAAAAAAADAP//AAAEAAAAAAAEAP//AAAEAAAAAAAFAP//AAAEAAAAAAAGAP//AAAFAAAAAAAGAAYAAAAFAAIAAAD//wYAAAADAAIAAAD/////AAADAAAAAAA=")
+tile_set = ExtResource("3_u1sye")
+
+[node name="InteriorWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAYAAAAFAAgAAAADAAUAAAABAAYAAAADAAQAAAABAAYAAAADAAMAAAABAAYAAAADAAEAAAADAAcAAAADAAAAAAABAAYAAAADAP//AAAFAAYAAAD//wEAAAAEAAcAAAAAAAEAAAAAAAYAAAACAAEAAAAAAAYAAAA=")
+tile_set = ExtResource("4_ptnlc")
+
+[node name="SimpleLight" parent="." instance=ExtResource("2_kpaxe")]
+position = Vector2(2459, 975)
+rotation = 1.5708
+
+[node name="SimpleLight2" parent="." instance=ExtResource("2_kpaxe")]
+position = Vector2(2433, 1964)
+rotation = 1.5708
+
+[node name="Wall Lamp" parent="." instance=ExtResource("3_nqu1i")]
+position = Vector2(84, 2218)
+rotation = 3.14159
+
+[node name="Wall Lamp3" parent="." instance=ExtResource("3_nqu1i")]
+position = Vector2(140, 897)
+rotation = 4.71238
+
+[node name="Wall Lamp4" parent="." instance=ExtResource("3_nqu1i")]
+position = Vector2(2443, 136)
+rotation = 6.28318
+
+[node name="Wall Lamp2" parent="." instance=ExtResource("3_nqu1i")]
+position = Vector2(1096, 126)
+
+[node name="Wall Lamp5" parent="." instance=ExtResource("3_nqu1i")]
+position = Vector2(1092, 2859)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
