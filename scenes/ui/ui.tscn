@@ -31,7 +31,6 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="LaserCounter/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_drcc4")
-text = "20"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="LaserCounter/VBoxContainer"]
@@ -60,7 +59,6 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="GrenadeCounter/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_drcc4")
-text = "5"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="GrenadeCounter/VBoxContainer"]
