@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cqxvhxovqc5y3" path="res://scenes/levels/level.tscn" id="1_vvaho"]
 [ext_resource type="Script" path="res://scenes/levels/inside.gd" id="2_b7cae"]
-[ext_resource type="PackedScene" uid="uid://dftjg7jpnimp6" path="res://scenes/levels/outside.tscn" id="3_18x3t"]
 [ext_resource type="PackedScene" uid="uid://dh388013fk8c1" path="res://scenes/objects/bed.tscn" id="3_aqli0"]
 [ext_resource type="Texture2D" uid="uid://cifbnftol3gii" path="res://graphics/ground/dirt.png" id="3_llnd3"]
 [ext_resource type="TileSet" uid="uid://dfq6fjtmjadgs" path="res://scenes/levels/interior.tres" id="3_pmtwd"]
@@ -16,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://cngnqm24po7a" path="res://graphics/lights/overlays/hole.png" id="12_o4spq"]
 [ext_resource type="Texture2D" uid="uid://bqfcv5bd5km47" path="res://graphics/lights/overlays/lattice.png" id="13_i60jq"]
 [ext_resource type="PackedScene" uid="uid://bjqe1dfjf2x0j" path="res://scenes/objects/simple_light.tscn" id="14_u70nc"]
+[ext_resource type="PackedScene" uid="uid://dqkwkjxmnswbp" path="res://scenes/items/item.tscn" id="16_trsb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buj1i"]
 size = Vector2(371, 762)
 
 [node name="Inside" instance=ExtResource("1_vvaho")]
 script = ExtResource("2_b7cae")
-outside_level_scene = ExtResource("3_18x3t")
 
 [node name="Dirt" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -62,9 +61,12 @@ position = Vector2(1522, 60)
 position = Vector2(-202, 76)
 
 [node name="Lights" type="Node2D" parent="." index="7"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="LightFanAnimation" parent="Lights" index="0" instance=ExtResource("10_tpgkn")]
 position = Vector2(4271, 2691)
+scale = Vector2(2.00912, 2.04138)
 
 [node name="LightFanAnimation2" parent="Lights" index="1" instance=ExtResource("10_tpgkn")]
 position = Vector2(7443, 2317)
@@ -129,5 +131,8 @@ blend_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
 position = Vector2(9165.5, 2341)
 shape = SubResource("RectangleShape2D_buj1i")
+
+[node name="Item" parent="." index="10" instance=ExtResource("16_trsb7")]
+position = Vector2(8411, 2145)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]
