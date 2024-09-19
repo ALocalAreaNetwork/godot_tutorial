@@ -1,4 +1,4 @@
 extends ItemContainer
 
-func hit() -> void:
-	print("toilet")
+func hit():
+	open_container(1)

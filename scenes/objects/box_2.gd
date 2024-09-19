@@ -1,4 +1,4 @@
 extends ItemContainer
 
 func hit():
-	print("box")
+	open_container(5)
