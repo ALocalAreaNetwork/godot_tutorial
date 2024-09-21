@@ -6,6 +6,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0d3fg"]
 shader = ExtResource("2_b4hwd")
+shader_parameter/color = Color(0.831373, 0.894118, 0.956863, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpxfh"]
 radius = 54.037
@@ -58,7 +60,7 @@ metadata/_edit_group_ = true
 [node name="LaserTimer" type="Timer" parent="Timers"]
 
 [node name="InvulnerabilityTimer" type="Timer" parent="Timers"]
-wait_time = 0.5
+wait_time = 0.2
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
