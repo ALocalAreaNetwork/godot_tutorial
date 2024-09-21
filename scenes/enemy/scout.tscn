@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq2qbllspgacc"]
+
+[ext_resource type="Script" path="res://scenes/enemy/scout.gd" id="1_l814l"]
+[ext_resource type="Texture2D" uid="uid://ck8psp1opj7ay" path="res://graphics/enemies/scout.png" id="1_v7gr2"]
+[ext_resource type="Shader" path="res://scenes/enemy/scout.gdshader" id="2_b4hwd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0d3fg"]
+shader = ExtResource("2_b4hwd")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hpxfh"]
+radius = 54.037
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nuc3"]
+radius = 850.021
+
+[node name="Scout" type="CharacterBody2D" groups=["Entity", "Scouts"]]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_l814l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0d3fg")
+position = Vector2(42, 27)
+rotation = 1.5708
+texture = ExtResource("1_v7gr2")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_hpxfh")
+metadata/_edit_lock_ = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_2nuc3")
+
+[node name="LaserSpawnPositions" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Marker2D" type="Marker2D" parent="LaserSpawnPositions"]
+position = Vector2(124, -27)
+
+[node name="Marker2D2" type="Marker2D" parent="LaserSpawnPositions"]
+position = Vector2(133, 11)
+
+[node name="Timers" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LaserTimer" type="Timer" parent="Timers"]
+
+[node name="InvulnerabilityTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="Timers/LaserTimer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="Timers/InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]
