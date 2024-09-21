@@ -9,6 +9,7 @@
 size = Vector2(237, 68)
 
 [node name="Toilet" instance=ExtResource("1_gyund")]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_syu40")
 
 [node name="CollisionShape2D" parent="." index="0"]

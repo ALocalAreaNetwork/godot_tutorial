@@ -32,18 +32,6 @@ func _on_player_grenade(pos, direction) -> void:
 	$Projectiles.add_child(grenade)
 	$UI.update_grenade_text()
 
-func _on_house_player_entered() -> void:
-	var tween = get_tree().create_tween()
-	#tween.set_parallel(true)
-	#tween.tween_property($Player, "modulate:a", 0, 2).from(1)
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(1,1), 1).set_trans(Tween.TRANS_QUAD)
-
-func _on_house_player_exited() -> void:
-	var tween = get_tree().create_tween()
-	#tween.set_parallel(true)
-	#tween.tween_property($Player, "modulate:a", 1, 2).from(0)
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6,0.6), 2)
-
 func _on_player_update_stats() -> void:
 	$UI.update_laser_text()	
 	$UI.update_grenade_text()

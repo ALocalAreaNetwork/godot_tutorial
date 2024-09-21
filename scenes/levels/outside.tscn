@@ -6545,16 +6545,9 @@ metadata/_edit_lock_ = true
 [node name="Item" parent="." index="2" instance=ExtResource("18_ytj12")]
 position = Vector2(1105, 377)
 
-[node name="Toilet" parent="." index="3" instance=ExtResource("15_ss2xk")]
-position = Vector2(2211, 411)
-rotation = 0.983384
-
-[node name="Box" parent="." index="4" instance=ExtResource("16_33srj")]
-position = Vector2(2443.77, 760.599)
-rotation = -0.402671
-scale = Vector2(1, 1)
-
-[node name="Player" parent="." index="7"]
+[node name="Player" parent="." index="5"]
 position = Vector2(674, 365)
 
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
