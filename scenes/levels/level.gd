@@ -31,7 +31,3 @@ func _on_player_grenade(pos, direction) -> void:
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
 	$UI.update_grenade_text()
-
-func _on_player_update_stats() -> void:
-	$UI.update_laser_text()	
-	$UI.update_grenade_text()
