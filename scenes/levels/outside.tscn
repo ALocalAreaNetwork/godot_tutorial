@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ceneliy15jpsd" path="res://scenes/objects/light_fan_animation.tscn" id="13_u3aur"]
 [ext_resource type="PackedScene" uid="uid://tnr1xhbxwh4p" path="res://scenes/objects/toilet.tscn" id="15_ss2xk"]
 [ext_resource type="PackedScene" uid="uid://ulvkcoskxqpa" path="res://scenes/objects/box2.tscn" id="16_33srj"]
-[ext_resource type="PackedScene" uid="uid://cq2qbllspgacc" path="res://scenes/enemy/scout.tscn" id="18_lvils"]
+[ext_resource type="PackedScene" uid="uid://2qudaa33eijp" path="res://scenes/enemy/bug.tscn" id="16_nucj5"]
 
 [node name="Outside" instance=ExtResource("1_w5bxf")]
 script = ExtResource("2_u8nnc")
@@ -103,8 +103,8 @@ collision_mask = 0
 position = Vector2(-2332, 2373)
 autoplay = "default"
 
-[node name="Scout" parent="Enemies" index="0" instance=ExtResource("18_lvils")]
-position = Vector2(2051, 443)
+[node name="CharacterBody2D" parent="Enemies" index="0" instance=ExtResource("16_nucj5")]
+position = Vector2(979, 449)
 
 [node name="Player" parent="." index="6"]
 z_index = 2
