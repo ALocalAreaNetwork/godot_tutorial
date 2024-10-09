@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dftjg7jpnimp6"]
+[gd_scene load_steps=18 format=3 uid="uid://dftjg7jpnimp6"]
 
 [ext_resource type="PackedScene" uid="uid://cqxvhxovqc5y3" path="res://scenes/levels/level.tscn" id="1_w5bxf"]
 [ext_resource type="Texture2D" uid="uid://clc8t3c67fdu2" path="res://graphics/ground/stones.png" id="2_b8jxr"]
@@ -14,8 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://njlt3vgox1n4" path="res://scenes/objects/steam_vent.tscn" id="12_2bwn0"]
 [ext_resource type="PackedScene" uid="uid://ceneliy15jpsd" path="res://scenes/objects/light_fan_animation.tscn" id="13_u3aur"]
 [ext_resource type="PackedScene" uid="uid://tnr1xhbxwh4p" path="res://scenes/objects/toilet.tscn" id="15_ss2xk"]
-[ext_resource type="PackedScene" uid="uid://1ulhllushgpy" path="res://scenes/enemy/drone.tscn" id="16_3mua8"]
 [ext_resource type="PackedScene" uid="uid://ulvkcoskxqpa" path="res://scenes/objects/box2.tscn" id="16_33srj"]
+[ext_resource type="PackedScene" uid="uid://dtgwoeft2sroe" path="res://scenes/enemy/car.tscn" id="16_i7pxm"]
+
+[sub_resource type="Curve2D" id="Curve2D_yol21"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 159, 1123, 16, -1184, -16, 1184, 1447, 3123, 1592, 48, -1592, -48, -2073, 5787, 232, 1000, -232, -1000, -3961, 4131, 144, 880, -144, -880, -5169, 2451, -712, 304, 712, -304, -3801, 795, -264, -104, 264, 104, -1657, -45, 0, 0, 0, 0, 159, 1123)
+}
+point_count = 8
 
 [node name="Outside" instance=ExtResource("1_w5bxf")]
 script = ExtResource("2_u8nnc")
@@ -103,12 +109,16 @@ collision_mask = 0
 position = Vector2(-2332, 2373)
 autoplay = "default"
 
-[node name="Drone" parent="Enemies" index="0" instance=ExtResource("16_3mua8")]
-position = Vector2(1310, 814)
-
 [node name="Player" parent="." index="6"]
 z_index = 2
 position = Vector2(674, 365)
+
+[node name="CarPath" type="Path2D" parent="." index="9"]
+curve = SubResource("Curve2D_yol21")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("16_i7pxm")]
+position = Vector2(159, 1123)
+rotation = 0.998651
 
 [connection signal="player_entered_gate" from="Ground/Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
