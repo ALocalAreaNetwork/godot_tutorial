@@ -34,4 +34,9 @@ func _on_attack_area_body_entered(_body: Node2D) -> void:
 
 func _on_attack_area_body_exited(_body: Node2D) -> void:
 	player_near = false
+	$AnimationPlayer.pause()
+	var tween = create_tween()
+	tween.tween_property(turret_left_line, "width", 0, randf_range(0.1,0.3))
+	tween.tween_property(turret_left_line, "width", 0, randf_range(0.1,0.3))
+	await(tween.finished)
 	$AnimationPlayer.stop()
