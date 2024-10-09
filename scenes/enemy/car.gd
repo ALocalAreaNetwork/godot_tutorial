@@ -9,8 +9,14 @@ var player_near: bool = false
 
 
 func fire():
+	var tween = create_tween()
+	$Turret/FireLeft.visible = true
+	$Turret/FireRight.visible = true
+	tween.set_parallel(true)
+	tween.tween_property($Turret/FireLeft, "visible", false, .1)
+	tween.tween_property($Turret/FireRight, "visible", false, .1)
 	Globals.health -= 20
-
+	
 func _ready():
 	turret_right_line.add_point(turret_right_ray.target_position)
 
@@ -25,4 +31,5 @@ func _on_attack_area_body_entered(_body: Node2D) -> void:
 	$AnimationPlayer.play('laser_charge')
 
 func _on_attack_area_body_exited(_body: Node2D) -> void:
+	$AnimationPlayer
 	player_near = false
