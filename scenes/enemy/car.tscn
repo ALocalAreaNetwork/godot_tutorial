@@ -121,13 +121,13 @@ width = 0.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="FireLeft" type="Sprite2D" parent="Turret"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(200, -27)
 rotation = 1.5708
 texture = ExtResource("4_u4d77")
 
 [node name="FireRight" type="Sprite2D" parent="Turret"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(200, 30)
 rotation = 1.5708
 texture = ExtResource("4_u4d77")
