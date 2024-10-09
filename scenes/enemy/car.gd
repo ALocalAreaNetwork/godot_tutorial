@@ -31,5 +31,5 @@ func _on_attack_area_body_entered(_body: Node2D) -> void:
 	$AnimationPlayer.play('laser_charge')
 
 func _on_attack_area_body_exited(_body: Node2D) -> void:
-	$AnimationPlayer
 	player_near = false
+	$AnimationPlayer.stop()
